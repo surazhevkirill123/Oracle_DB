@@ -1,0 +1,28 @@
+DEFINE TABLESPACE_NAME = &&1
+DEFINE END_DATA = '_DATA'
+DEFINE END_INDEX = '_INDEX'
+
+CREATE TABLE listening (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+, "date" TIMESTAMP
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA;
+
+ALTER TABLE listening ADD CONSTRAINT fk_listening_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID);
+
+ALTER TABLE listening ADD CONSTRAINT fk_listening_ID_song FOREIGN KEY(ID_song)
+REFERENCES song (ID);
+
+CREATE INDEX fk_listening_ID_user ON listening(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX;
+
+CREATE INDEX fk_listening_ID_song ON listening(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX;
+
+COMMENT ON COLUMN listening.ID_user IS 'Primary key of user';
+
+COMMENT ON COLUMN listening.ID_song IS 'Primary key of song';
+
+UNDEFINE TABLESPACE_NAME
+UNDEFINE END_DATA
+UNDEFINE END_INDEX

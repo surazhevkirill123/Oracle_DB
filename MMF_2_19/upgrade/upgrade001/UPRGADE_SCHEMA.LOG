@@ -1,0 +1,2131 @@
+SP2-0306: Invalid option.
+Usage: CONN[ECT] [{logon|/|proxy} [AS {SYSDBA|SYSOPER|SYSASM|SYSBACKUP|SYSDG|SYSKM|SYSRAC}] [edition=value]]
+where <logon> ::= <username>[/<password>][@<connect_identifier>]
+      <proxy> ::= <proxyuser>[<username>][/<password>][@<connect_identifier>]
+'Creating tables'
+old:CREATE TABLE "user" (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, email VARCHAR2(255) NOT NULL 
+, login VARCHAR2(255) NOT NULL 
+, first_name VARCHAR2(255)
+, last_name VARCHAR2(255)
+, ID_song INT
+, stopped_time INT
+, CONSTRAINT user_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX user_pk ON "user"(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE "user" (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, email VARCHAR2(255) NOT NULL 
+, login VARCHAR2(255) NOT NULL 
+, first_name VARCHAR2(255)
+, last_name VARCHAR2(255)
+, ID_song INT
+, stopped_time INT
+, CONSTRAINT user_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX user_pk ON "user"(ID)
+	  TABLESPACE sys_INDEX
+  )
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/user.sql
+In command -
+CREATE TABLE "user" (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, email VARCHAR2(255) NOT NULL 
+, login VARCHAR2(255) NOT NULL 
+, first_name VARCHAR2(255)
+, last_name VARCHAR2(255)
+, ID_song INT
+, stopped_time INT
+, CONSTRAINT user_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX user_pk ON "user"(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 24 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/user.sql
+In command -
+COMMENT ON COLUMN "user".ID IS 'Primary key'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 26 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/user.sql
+In command -
+COMMENT ON COLUMN "user".email IS 'Personal information'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 28 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/user.sql
+In command -
+COMMENT ON COLUMN "user".login IS 'Public information'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 30 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/user.sql
+In command -
+COMMENT ON COLUMN "user".first_name IS 'Public information'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 32 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/user.sql
+In command -
+COMMENT ON COLUMN "user".last_name IS 'Public information'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 34 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/user.sql
+In command -
+COMMENT ON COLUMN "user".ID_song IS 'Current song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 36 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/user.sql
+In command -
+COMMENT ON COLUMN "user".stopped_time IS 'Stopped time in current song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE album (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, title VARCHAR2(255) NOT NULL 
+, CONSTRAINT album_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX album_pk ON album(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE album (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, title VARCHAR2(255) NOT NULL 
+, CONSTRAINT album_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX album_pk ON album(ID)
+	  TABLESPACE sys_INDEX
+  )
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/album.sql
+In command -
+CREATE TABLE album (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, title VARCHAR2(255) NOT NULL 
+, CONSTRAINT album_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX album_pk ON album(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 18 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/album.sql
+In command -
+COMMENT ON COLUMN album.ID IS 'Primary key'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 20 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/album.sql
+In command -
+COMMENT ON COLUMN album.title IS 'Title of album'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE song (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, ID_album INT
+, title VARCHAR2(255) NOT NULL 
+, "duration" INT NOT NULL
+, ID_user INT NOT NULL
+, CONSTRAINT song_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX song_pk ON song(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE song (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, ID_album INT
+, title VARCHAR2(255) NOT NULL 
+, "duration" INT NOT NULL
+, ID_user INT NOT NULL
+, CONSTRAINT song_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX song_pk ON song(ID)
+	  TABLESPACE sys_INDEX
+  )
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 6 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+CREATE TABLE song (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, ID_album INT
+, title VARCHAR2(255) NOT NULL 
+, "duration" INT NOT NULL
+, ID_user INT NOT NULL
+, CONSTRAINT song_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX song_pk ON song(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 22 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+ALTER TABLE song ADD CONSTRAINT fk_song_ID_album FOREIGN KEY(ID_album)
+REFERENCES album (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_song_ID_album ON song(ID_album) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_song_ID_album ON song(ID_album) TABLESPACE sys_INDEX
+
+Error starting at line : 25 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+CREATE INDEX fk_song_ID_album ON song(ID_album) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 27 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+ALTER TABLE song ADD CONSTRAINT fk_song_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_song_ID_user ON song(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_song_ID_user ON song(ID_user) TABLESPACE sys_INDEX
+
+Error starting at line : 30 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+CREATE INDEX fk_song_ID_user ON song(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 32 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+COMMENT ON COLUMN song.ID IS 'Primary key'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 34 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+COMMENT ON COLUMN song.ID_album IS 'Primary key of album'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 36 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+COMMENT ON COLUMN song.Title IS 'Title of song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 38 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+COMMENT ON COLUMN song."duration" IS 'Duration of song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 40 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+COMMENT ON COLUMN song.ID_user IS 'Primary key of creator'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 44 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+ALTER TABLE "user" ADD CONSTRAINT fk_user_ID_song FOREIGN KEY(ID_song)
+REFERENCES song (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_user_ID_song ON "user"(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_user_ID_song ON "user"(ID_song) TABLESPACE sys_INDEX
+
+Error starting at line : 47 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song.sql
+In command -
+CREATE INDEX fk_user_ID_song ON "user"(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE like_album (
+  ID_user INT NOT NULL
+, ID_album INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE like_album (
+  ID_user INT NOT NULL
+, ID_album INT NOT NULL
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_album.sql
+In command -
+CREATE TABLE like_album (
+  ID_user INT NOT NULL
+, ID_album INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 11 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_album.sql
+In command -
+ALTER TABLE like_album ADD CONSTRAINT fk_like_album_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 14 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_album.sql
+In command -
+ALTER TABLE like_album ADD CONSTRAINT fk_like_album_ID_album FOREIGN KEY(ID_album)
+REFERENCES album (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_like_album_ID_user ON like_album(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_like_album_ID_user ON like_album(ID_user) TABLESPACE sys_INDEX
+
+Error starting at line : 17 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_album.sql
+In command -
+CREATE INDEX fk_like_album_ID_user ON like_album(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_like_album_ID_album ON like_album(ID_album) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_like_album_ID_album ON like_album(ID_album) TABLESPACE sys_INDEX
+
+Error starting at line : 19 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_album.sql
+In command -
+CREATE INDEX fk_like_album_ID_album ON like_album(ID_album) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 21 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_album.sql
+In command -
+COMMENT ON COLUMN like_album.ID_user IS 'Primary key of user'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 23 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_album.sql
+In command -
+COMMENT ON COLUMN like_album.ID_album IS 'Primary key of album'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE repost_album (
+  ID_user INT NOT NULL
+, ID_album INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE repost_album (
+  ID_user INT NOT NULL
+, ID_album INT NOT NULL
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_album.sql
+In command -
+CREATE TABLE repost_album (
+  ID_user INT NOT NULL
+, ID_album INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 11 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_album.sql
+In command -
+ALTER TABLE repost_album ADD CONSTRAINT fk_repost_album_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 14 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_album.sql
+In command -
+ALTER TABLE repost_album ADD CONSTRAINT fk_repost_album_ID_album FOREIGN KEY(ID_album)
+REFERENCES album (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_repost_album_ID_user ON repost_album(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_repost_album_ID_user ON repost_album(ID_user) TABLESPACE sys_INDEX
+
+Error starting at line : 17 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_album.sql
+In command -
+CREATE INDEX fk_repost_album_ID_user ON repost_album(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_repost_album_ID_album ON repost_album(ID_album) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_repost_album_ID_album ON repost_album(ID_album) TABLESPACE sys_INDEX
+
+Error starting at line : 19 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_album.sql
+In command -
+CREATE INDEX fk_repost_album_ID_album ON repost_album(ID_album) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 21 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_album.sql
+In command -
+COMMENT ON COLUMN repost_album.ID_user IS 'Primary key of user'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 23 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_album.sql
+In command -
+COMMENT ON COLUMN repost_album.ID_album IS 'Primary key of album'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE review_album (
+  ID_user INT NOT NULL
+, ID_album INT NOT NULL
+, text VARCHAR2(2048) NOT NULL 
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE review_album (
+  ID_user INT NOT NULL
+, ID_album INT NOT NULL
+, text VARCHAR2(2048) NOT NULL 
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_album.sql
+In command -
+CREATE TABLE review_album (
+  ID_user INT NOT NULL
+, ID_album INT NOT NULL
+, text VARCHAR2(2048) NOT NULL 
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 12 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_album.sql
+In command -
+ALTER TABLE review_album ADD CONSTRAINT fk_review_album_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 15 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_album.sql
+In command -
+ALTER TABLE review_album ADD CONSTRAINT fk_review_album_ID_album FOREIGN KEY(ID_album)
+REFERENCES album (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_review_album_ID_user ON review_album(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_review_album_ID_user ON review_album(ID_user) TABLESPACE sys_INDEX
+
+Error starting at line : 18 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_album.sql
+In command -
+CREATE INDEX fk_review_album_ID_user ON review_album(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_review_album_ID_album ON review_album(ID_album) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_review_album_ID_album ON review_album(ID_album) TABLESPACE sys_INDEX
+
+Error starting at line : 20 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_album.sql
+In command -
+CREATE INDEX fk_review_album_ID_album ON review_album(ID_album) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 22 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_album.sql
+In command -
+COMMENT ON COLUMN review_album.ID_user IS 'Primary key of user'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 24 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_album.sql
+In command -
+COMMENT ON COLUMN review_album.ID_album IS 'Primary key of album'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE listening (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+, "date" TIMESTAMP
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE listening (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+, "date" TIMESTAMP
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/listening.sql
+In command -
+CREATE TABLE listening (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+, "date" TIMESTAMP
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 12 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/listening.sql
+In command -
+ALTER TABLE listening ADD CONSTRAINT fk_listening_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 15 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/listening.sql
+In command -
+ALTER TABLE listening ADD CONSTRAINT fk_listening_ID_song FOREIGN KEY(ID_song)
+REFERENCES song (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_listening_ID_user ON listening(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_listening_ID_user ON listening(ID_user) TABLESPACE sys_INDEX
+
+Error starting at line : 18 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/listening.sql
+In command -
+CREATE INDEX fk_listening_ID_user ON listening(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_listening_ID_song ON listening(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_listening_ID_song ON listening(ID_song) TABLESPACE sys_INDEX
+
+Error starting at line : 20 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/listening.sql
+In command -
+CREATE INDEX fk_listening_ID_song ON listening(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 22 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/listening.sql
+In command -
+COMMENT ON COLUMN listening.ID_user IS 'Primary key of user'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 24 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/listening.sql
+In command -
+COMMENT ON COLUMN listening.ID_song IS 'Primary key of song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE like_song (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE like_song (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_song.sql
+In command -
+CREATE TABLE like_song (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 11 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_song.sql
+In command -
+ALTER TABLE like_song ADD CONSTRAINT fk_like_song_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 14 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_song.sql
+In command -
+ALTER TABLE like_song ADD CONSTRAINT fk_like_song_ID_song FOREIGN KEY(ID_song)
+REFERENCES song (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_like_song_ID_user ON like_song(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_like_song_ID_user ON like_song(ID_user) TABLESPACE sys_INDEX
+
+Error starting at line : 17 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_song.sql
+In command -
+CREATE INDEX fk_like_song_ID_user ON like_song(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_like_song_ID_song ON like_song(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_like_song_ID_song ON like_song(ID_song) TABLESPACE sys_INDEX
+
+Error starting at line : 19 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_song.sql
+In command -
+CREATE INDEX fk_like_song_ID_song ON like_song(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 21 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_song.sql
+In command -
+COMMENT ON COLUMN like_song.ID_user IS 'Primary key of user'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 23 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/like_song.sql
+In command -
+COMMENT ON COLUMN like_song.ID_song IS 'Primary key of song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE repost_song (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE repost_song (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_song.sql
+In command -
+CREATE TABLE repost_song (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 11 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_song.sql
+In command -
+ALTER TABLE repost_song ADD CONSTRAINT fk_repost_song_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 14 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_song.sql
+In command -
+ALTER TABLE repost_song ADD CONSTRAINT fk_repost_song_ID_album FOREIGN KEY(ID_song)
+REFERENCES song (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_repost_song_ID_user ON repost_song(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_repost_song_ID_user ON repost_song(ID_user) TABLESPACE sys_INDEX
+
+Error starting at line : 17 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_song.sql
+In command -
+CREATE INDEX fk_repost_song_ID_user ON repost_song(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_repost_song_ID_album ON repost_song(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_repost_song_ID_album ON repost_song(ID_song) TABLESPACE sys_INDEX
+
+Error starting at line : 19 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_song.sql
+In command -
+CREATE INDEX fk_repost_song_ID_album ON repost_song(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 21 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_song.sql
+In command -
+COMMENT ON COLUMN repost_song.ID_user IS 'Primary key of user'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 23 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/repost_song.sql
+In command -
+COMMENT ON COLUMN repost_song.ID_song IS 'Primary key of song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE review_song (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+, text VARCHAR2(2048) NOT NULL 
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE review_song (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+, text VARCHAR2(2048) NOT NULL 
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_song.sql
+In command -
+CREATE TABLE review_song (
+  ID_user INT NOT NULL
+, ID_song INT NOT NULL
+, text VARCHAR2(2048) NOT NULL 
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 12 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_song.sql
+In command -
+ALTER TABLE review_song ADD CONSTRAINT fk_review_song_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 15 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_song.sql
+In command -
+ALTER TABLE review_song ADD CONSTRAINT fk_review_song_ID_song FOREIGN KEY(ID_song)
+REFERENCES song (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_review_song_ID_user ON review_song(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_review_song_ID_user ON review_song(ID_user) TABLESPACE sys_INDEX
+
+Error starting at line : 18 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_song.sql
+In command -
+CREATE INDEX fk_review_song_ID_user ON review_song(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_review_song_ID_song ON review_song(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_review_song_ID_song ON review_song(ID_song) TABLESPACE sys_INDEX
+
+Error starting at line : 20 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_song.sql
+In command -
+CREATE INDEX fk_review_song_ID_song ON review_song(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 22 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_song.sql
+In command -
+COMMENT ON COLUMN review_song.ID_user IS 'Primary key of user'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 24 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/review_song.sql
+In command -
+COMMENT ON COLUMN review_song.ID_song IS 'Primary key of song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE genre (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, title VARCHAR2(255) NOT NULL 
+, CONSTRAINT genre_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX genre_pk ON genre(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE genre (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, title VARCHAR2(255) NOT NULL 
+, CONSTRAINT genre_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX genre_pk ON genre(ID)
+	  TABLESPACE sys_INDEX
+  )
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/genre.sql
+In command -
+CREATE TABLE genre (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, title VARCHAR2(255) NOT NULL 
+, CONSTRAINT genre_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX genre_pk ON genre(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 18 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/genre.sql
+In command -
+COMMENT ON COLUMN genre.ID IS 'Primary key'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 20 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/genre.sql
+In command -
+COMMENT ON COLUMN genre.title IS 'Title of genre'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE song_genre (
+  ID_song INT NOT NULL
+, ID_genre INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE song_genre (
+  ID_song INT NOT NULL
+, ID_genre INT NOT NULL
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song_genre.sql
+In command -
+CREATE TABLE song_genre (
+  ID_song INT NOT NULL
+, ID_genre INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 11 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song_genre.sql
+In command -
+ALTER TABLE song_genre ADD CONSTRAINT fk_song_genre_ID_song FOREIGN KEY(ID_song)
+REFERENCES song (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 14 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song_genre.sql
+In command -
+ALTER TABLE song_genre ADD CONSTRAINT fk_song_genre_ID_user FOREIGN KEY(ID_genre)
+REFERENCES genre (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_song_genre_ID_song ON song_genre(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_song_genre_ID_song ON song_genre(ID_song) TABLESPACE sys_INDEX
+
+Error starting at line : 17 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song_genre.sql
+In command -
+CREATE INDEX fk_song_genre_ID_song ON song_genre(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_song_genre_ID_user ON song_genre(ID_genre) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_song_genre_ID_user ON song_genre(ID_genre) TABLESPACE sys_INDEX
+
+Error starting at line : 19 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song_genre.sql
+In command -
+CREATE INDEX fk_song_genre_ID_user ON song_genre(ID_genre) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 21 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song_genre.sql
+In command -
+COMMENT ON COLUMN song_genre.ID_song IS 'Primary key of song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 23 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/song_genre.sql
+In command -
+COMMENT ON COLUMN song_genre.ID_genre IS 'Primary key of genre'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE playlist (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, ID_user INT NOT NULL
+, title VARCHAR2(255) NOT NULL 
+, "generated" CHAR NOT NULL
+, CONSTRAINT playlist_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX playlist_pk ON playlist(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+, CONSTRAINT playlist_publick_bool CHECK ("generated" IN ('N', 'Y')) 
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE playlist (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, ID_user INT NOT NULL
+, title VARCHAR2(255) NOT NULL 
+, "generated" CHAR NOT NULL
+, CONSTRAINT playlist_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX playlist_pk ON playlist(ID)
+	  TABLESPACE sys_INDEX
+  )
+, CONSTRAINT playlist_publick_bool CHECK ("generated" IN ('N', 'Y')) 
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist.sql
+In command -
+CREATE TABLE playlist (
+  ID INT GENERATED ALWAYS AS IDENTITY INCREMENT BY 1 START WITH 1 MINVALUE 1 NOMAXVALUE NOT NULL
+, ID_user INT NOT NULL
+, title VARCHAR2(255) NOT NULL 
+, "generated" CHAR NOT NULL
+, CONSTRAINT playlist_pk PRIMARY KEY (
+    ID
+  )
+  USING INDEX (
+      CREATE UNIQUE INDEX playlist_pk ON playlist(ID)
+	  TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+  )
+, CONSTRAINT playlist_publick_bool CHECK ("generated" IN ('N', 'Y')) 
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 21 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist.sql
+In command -
+ALTER TABLE playlist ADD CONSTRAINT fk_playlist_ID_user FOREIGN KEY(ID_user)
+REFERENCES "user" (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_playlist_ID_user ON playlist(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_playlist_ID_user ON playlist(ID_user) TABLESPACE sys_INDEX
+
+Error starting at line : 24 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist.sql
+In command -
+CREATE INDEX fk_playlist_ID_user ON playlist(ID_user) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 26 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist.sql
+In command -
+COMMENT ON COLUMN playlist.ID IS 'Primary key'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 28 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist.sql
+In command -
+COMMENT ON COLUMN playlist.ID_user IS 'Primary key of user'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 30 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist.sql
+In command -
+COMMENT ON COLUMN playlist.title IS 'Title of playlist'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 32 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist.sql
+In command -
+COMMENT ON COLUMN playlist."generated" IS 'Is this play list generated by system'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE TABLE playlist_song (
+  ID_playlist INT NOT NULL
+, ID_song INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+new:CREATE TABLE playlist_song (
+  ID_playlist INT NOT NULL
+, ID_song INT NOT NULL
+)
+TABLESPACE sys_DATA
+
+Error starting at line : 5 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist_song.sql
+In command -
+CREATE TABLE playlist_song (
+  ID_playlist INT NOT NULL
+, ID_song INT NOT NULL
+)
+TABLESPACE &&TABLESPACE_NAME&&END_DATA
+Error report -
+ORA-00959: tablespace 'SYS_DATA' does not exist
+00959. 00000 -  "tablespace '%s' does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 11 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist_song.sql
+In command -
+ALTER TABLE playlist_song ADD CONSTRAINT fk_playlist_song_ID_playlist FOREIGN KEY(ID_playlist)
+REFERENCES playlist (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 14 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist_song.sql
+In command -
+ALTER TABLE playlist_song ADD CONSTRAINT fk_playlist_song_ID_song FOREIGN KEY(ID_song)
+REFERENCES song (ID)
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_playlist_song_ID_playlist ON playlist_song(ID_playlist) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_playlist_song_ID_playlist ON playlist_song(ID_playlist) TABLESPACE sys_INDEX
+
+Error starting at line : 17 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist_song.sql
+In command -
+CREATE INDEX fk_playlist_song_ID_playlist ON playlist_song(ID_playlist) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+old:CREATE INDEX fk_playlist_song_ID_song ON playlist_song(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+new:CREATE INDEX fk_playlist_song_ID_song ON playlist_song(ID_song) TABLESPACE sys_INDEX
+
+Error starting at line : 19 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist_song.sql
+In command -
+CREATE INDEX fk_playlist_song_ID_song ON playlist_song(ID_song) TABLESPACE &&TABLESPACE_NAME&&END_INDEX
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 21 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist_song.sql
+In command -
+COMMENT ON COLUMN playlist_song.ID_playlist IS 'Primary key of playlist'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 23 File @ /media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/tables/playlist_song.sql
+In command -
+COMMENT ON COLUMN playlist_song.ID_song IS 'Primary key of song'
+Error report -
+ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+'Tables were inserted'
+'Inserting data'
+
+Error starting at line : 3 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO "user"(email, login, first_name, last_name, ID_song, stopped_time) VALUES ('creator', 'Dreamboat', 'Oleg', 'Synytsky', NULL, NULL)
+Error at Command Line : 3 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 4 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO "user"(email, login, first_name, last_name, ID_song, stopped_time) VALUES ('creator', 'Dumpling', 'Christian', 'Radaelli', NULL, NULL)
+Error at Command Line : 4 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 5 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO "user"(email, login, first_name, last_name, ID_song, stopped_time) VALUES ('creator', 'Monsieur', 'Ten', 'Walls', NULL, NULL)
+Error at Command Line : 5 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 6 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO "user"(email, login, first_name, last_name, ID_song, stopped_time) VALUES ('creator', 'Snuggy', 'Kelvin ', 'Pasman', NULL, NULL)
+Error at Command Line : 6 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 7 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO "user"(email, login, first_name, last_name, ID_song, stopped_time) VALUES ('creator', 'DJ Bishop', NULL, NULL, NULL, NULL)
+Error at Command Line : 7 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 8 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO "user"(email, login, first_name, last_name, ID_song, stopped_time) VALUES ('creator', 'H?lder', 'Leal', 'Synytsky', NULL, NULL)
+Error at Command Line : 8 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 10 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Nicolas Jaar - El Bandido', 397, 1)
+Error at Command Line : 10 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 11 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Electro - Trance - House', 249, 1)
+Error at Command Line : 11 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 12 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Nice Night', 321, 1)
+Error at Command Line : 12 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Electro 2020', 605, 2)
+Error at Command Line : 13 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 14 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'REMIX BOLICHEROS 2019!!!', 481, 2)
+Error at Command Line : 14 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 15 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Drifting', 131, 3)
+Error at Command Line : 15 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 16 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'SESSION #186 (Feat. Ten Walls)', 242, 3)
+Error at Command Line : 16 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 17 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Ariana Grande - Side To Side Ft. Nicki Minaj (Remix)',  192, 4)
+Error at Command Line : 17 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 18 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Major Lazer - Too Original (Remix)', 165, 4)
+Error at Command Line : 18 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 19 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Ten Walls - Sparta', 224, 3)
+Error at Command Line : 19 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 20 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Murda On They Mind (Tales From Mount Zion)', 182, 5)
+Error at Command Line : 20 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 21 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'James Blake - Air Lack Thereof', 249, 6)
+Error at Command Line : 21 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 22 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Little Fish', 133, 6)
+Error at Command Line : 22 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 23 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song(ID_album, title, "duration", ID_user) VALUES (NULL, 'Jamie XX - Loud Places (feat. Romy)', 283, 6)
+Error at Command Line : 23 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 25 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO "user"(email, login, first_name, last_name, ID_song, stopped_time) VALUES ('ChewbacaMorning@gmail.com', 'Chewbaca', '���������', '��������', 3, 62)
+Error at Command Line : 25 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 26 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO "user"(email, login, first_name, last_name, ID_song, stopped_time) VALUES ('Circle_Bug@gmail.com', 'Bug', '���������', '��������', 10, 121)
+Error at Command Line : 26 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 28 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (1, 1)
+Error at Command Line : 28 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 29 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (1, 2)
+Error at Command Line : 29 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 30 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (1, 3)
+Error at Command Line : 30 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 31 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (1, 4)
+Error at Command Line : 31 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 32 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (1, 5)
+Error at Command Line : 32 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 33 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (2, 6)
+Error at Command Line : 33 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 34 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (2, 7)
+Error at Command Line : 34 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 35 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (2, 8)
+Error at Command Line : 35 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 36 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (2, 9)
+Error at Command Line : 36 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 37 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (2, 10)
+Error at Command Line : 37 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 38 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (2, 11)
+Error at Command Line : 38 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 39 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (2, 12)
+Error at Command Line : 39 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 40 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (2, 13)
+Error at Command Line : 40 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 41 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO listening(ID_user, ID_song) VALUES (2, 14)
+Error at Command Line : 41 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 43 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO like_song VALUES (1, 1)
+Error at Command Line : 43 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 44 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO like_song VALUES (1, 3)
+Error at Command Line : 44 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 45 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO like_song VALUES (1, 5)
+Error at Command Line : 45 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 46 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO like_song VALUES (2, 7)
+Error at Command Line : 46 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 47 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO like_song VALUES (2, 9)
+Error at Command Line : 47 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 48 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO like_song VALUES (2, 11)
+Error at Command Line : 48 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 49 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO like_song VALUES (2, 13)
+Error at Command Line : 49 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 51 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO review_song VALUES (1, 1, 'Nah not feelin it')
+Error at Command Line : 51 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 52 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO review_song VALUES (1, 3, 'NIGGER!!!!')
+Error at Command Line : 52 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 53 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO review_song VALUES (1, 4, 'Sadie is my dog')
+Error at Command Line : 53 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 54 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO review_song VALUES (2, 6, 'Jesus christ')
+Error at Command Line : 54 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 55 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO review_song VALUES (2, 8, 'another classic')
+Error at Command Line : 55 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 56 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO review_song VALUES (2, 9, '������ ������')
+Error at Command Line : 56 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 57 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO review_song VALUES (2, 10, '����� ��������� ���')
+Error at Command Line : 57 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 59 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO genre(title) VALUES ('Electronic')
+Error at Command Line : 59 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 60 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO genre(title) VALUES ('Sport')
+Error at Command Line : 60 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 61 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO genre(title) VALUES ('Pop')
+Error at Command Line : 61 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 62 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO genre(title) VALUES ('Chill')
+Error at Command Line : 62 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 64 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (1, 1)
+Error at Command Line : 64 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 65 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (2, 1)
+Error at Command Line : 65 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 66 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (3, 1)
+Error at Command Line : 66 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 67 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (4, 1)
+Error at Command Line : 67 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 68 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (5, 1)
+Error at Command Line : 68 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 69 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (6, 2)
+Error at Command Line : 69 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 70 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (7, 2)
+Error at Command Line : 70 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 71 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (8, 3)
+Error at Command Line : 71 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 72 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (9, 3)
+Error at Command Line : 72 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 73 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (10, 2)
+Error at Command Line : 73 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 74 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (11, 4)
+Error at Command Line : 74 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 75 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (12, 1)
+Error at Command Line : 75 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 76 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (13, 1)
+Error at Command Line : 76 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 77 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO song_genre VALUES (14, 1)
+Error at Command Line : 77 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 80 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist(ID_user, title, "generated") VALUES (1, 'Morning', 'N')
+Error at Command Line : 80 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 81 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist(ID_user, title, "generated") VALUES (2, 'Sport', 'Y')
+Error at Command Line : 81 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 82 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist(ID_user, title, "generated") VALUES (2, 'Bamboo', 'N')
+Error at Command Line : 82 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 84 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (1, 1)
+Error at Command Line : 84 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 85 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (1, 2)
+Error at Command Line : 85 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 86 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (1, 3)
+Error at Command Line : 86 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 87 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (1, 4)
+Error at Command Line : 87 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 88 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (1, 5)
+Error at Command Line : 88 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 89 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (2, 6)
+Error at Command Line : 89 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 90 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (2, 7)
+Error at Command Line : 90 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 91 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (2, 8)
+Error at Command Line : 91 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 92 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (2, 9)
+Error at Command Line : 92 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 93 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (2, 10)
+Error at Command Line : 93 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 94 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (3, 11)
+Error at Command Line : 94 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 95 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (3, 12)
+Error at Command Line : 95 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 96 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (3, 13)
+Error at Command Line : 96 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+
+Error starting at line : 97 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+In command -
+INSERT INTO playlist_song VALUES (3, 14)
+Error at Command Line : 97 Column : 13 File @ file:/media/sf_BSU_DB-master/BSU_DB-master/MMF_2_19/upgrade/upgrade001/insert_data.sql
+Error report -
+SQL Error: ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+'Data was inserted'

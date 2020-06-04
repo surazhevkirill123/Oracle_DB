@@ -1,0 +1,7 @@
+DEFINE USER_NAME = &&1
+
+PROMPT 'Dropping user'
+DROP USER &USER_NAME CASCADE;       
+PROMPT 'User was dropped'
+
+UNDEFINE USER_NAME

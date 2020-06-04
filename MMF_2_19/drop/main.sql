@@ -1,0 +1,8 @@
+SPOOL DROP_SCHEMA.LOG
+SET SERVEROUTPUT ON
+
+@drop_tablespaces.sql &&1
+@drop_user.sql &&1
+
+SET SERVEROUTPUT OFF
+SPOOL OFF
